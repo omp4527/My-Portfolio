@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding-top: 50px;
+        }
+
+        h1, h2, h3 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #00bcd4;
+            transition: 0.3s ease;
+        }
+
+        a:hover {
+            color: #ff4081;
+        }
+
+        /* Header and Navigation */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background-color: #333;
+            padding: 15px 0;
+            z-index: 999;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        nav ul li a:hover {
+            color: #00bcd4;
+        }
+
+        /* Home Section */
+        #home {
+            text-align: center;
+            background-image: url('https://assets.onecompiler.app/43c4khydj/43dx4q9qt/bkgimg.jpg'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            color: white;
+            animation: fadeIn 2s ease-in-out;
+            position: relative;
+            height: 100vh; /* Fullscreen height */
+        }
+
+        .home-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        #home h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        #home p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .home-btn {
+            padding: 12px 30px;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .home-btn:hover {
+            background-color: #00bcd4;
+        }
+
+        /* Photo container */
+        .photo-container {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 5px solid #fff; /* White border for contrast */
+            padding: 10px;
+            margin-top: 30px;
+        }
+
+        .interactive-photo {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .photo-container:hover .interactive-photo {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        /* About Me Section */
+        #about {
+            background-color: #181818;
+            border-radius: 10px;
+            padding: 50px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            margin-top: 50px;
+            animation: slideInLeft 1.5s ease;
+        }
+
+        #about img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        #about p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Projects Section */
+        #projects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            animation: fadeIn 2s ease-in-out;
+            margin-top: 50px;
+        }
+
+        .project-card {
+            background-color: #222;
+            width: 300px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: 0.3s ease;
+        }
+
+        .project-card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .project-card h3 {
+            margin-top: 10px;
+            color: #ff4081;
+        }
+
+        .project-card p {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: #1c1c1c;
+            border-radius: 10px;
+            padding: 50px;
+            color: #fff;
+            text-align: center;
+            margin-top: 50px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        #contact form input, #contact form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #555;
+            background-color: #333;
+            color: #fff;
+        }
+
+        #contact form button {
+            padding: 15px 30px;
+            border: none;
+            background-color: #ff4081;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #contact form button:hover {
+            background-color: #00bcd4;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="home-content">
+            <h1>Om Patil</h1>
+            <p>Explore my work, projects, and more!</p>
+            <a href="#about">
+                <button class="home-btn">Learn More About Me</button>
+            </a>
+            <div class="photo-container">
+                <img src="profile2.png" alt="Your Photo" class="interactive-photo">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <img src="profile2.png" alt="Your Photo">
+        <p>Hey, I'm someone who loves building stuff—especially when it's related to robotics. I’ve always been curious about how things work, and that naturally pulled me into creating projects where I get to design, build, and sometimes even troubleshoot for hours (which I weirdly enjoy). Robotics gives me a mix of hardware and software to play around with, and I like the challenge that comes with it.</p>
+        <p>Apart from that, I have a growing inpngprofile2.pngest in coding. I know HTML, CSS, and Java, and I’ve used them in different projects, mostly for web stuff. I enjoy making things look good and work smoothly. Whether it’s styling with CSS or writing logic in Java, I’m always down to experiment and learn something new.</p>
+        <p>I'm always looking for ways to improve, try out new ideas, and push myself a little more with every project. For me, learning by doing is the best part. This portfolio is just a small part of what I’ve worked on—and there’s a lot more I’m planning to build.</p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="project-card">
+            <img src="https://assets.onecompiler.app/43c4khydj/43dx4q9qt/project1.jpg" alt="Project 1">
+            <h3>Human-Following Robo Car</h3>
+            <p>Built a robo car using Arduino that can detect and follow a person using ultrasonic sensors. I handled the wiring, sensor setup, and coding to control the motors based on distance. It was a fun hands-on project combining both hardware and software.</p>
+        </div>
+        <div class="project-card">
+            <img src="https://assets.onecompiler.app/43c4khydj/43dx4q9qt/project2.jpg" alt="Project 2">
+            <h3>Personal Portfolio Website</h3>
+            <p>Designed and built my own portfolio using HTML and CSS with a dark theme and interactive images. This project helped me improve my front-end skills and focus on layout, styling, and smooth user experience—without using JavaScript.</p>
+        </div>
+        <div class="project-card">
+            <img src="https://assets.onecompiler.app/43c4khydj/43dx4q9qt/project3.jpg" alt="Project 3">
+            <h3>Solar Power Bank for Mobile Charging</h3>
+            <p>Designed and built a portable solar power bank that can charge mobile devices using solar energy. I worked on connecting solar panels with a battery and regulating the output to safely charge phones. This project taught me a lot about renewable energy, circuit design, and real-world problem-solving.</p>
+        </div>
+    </section>
+
+    <!-- Contact Me Section -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form action="submit_form.php" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+        <div class="social-links">
+        <a href="https://github.com/omp4527/My-Portfolio.git" target="_blank">
+            <img src="https://assets.onecompiler.app/43c4khydj/43dx4q9qt/github.jpg" alt="GitHub" class="social-logo">
+        </a>
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 My Portfolio. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>
